@@ -11,7 +11,6 @@ menuButton.addEventListener('click',function(){
   barNav.classList.toggle('flex');
 });
 
-
 function handleIntersection(entries, observer) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -31,5 +30,5 @@ typewriters.forEach(typewriter => {
 window.addEventListener('scroll', function() {
   const scrolled = window.scrollY;
   const parallax = document.querySelector('.parallax');
-  parallax.style.transform = 'translateY(' + (scrolled * 0.5  ) + 'px)'; // Adjust the factor for the parallax effect
+  parallax.style.transform = 'translateY(' + (scrolled * 0.5  ) + 'px)'; 
 });
