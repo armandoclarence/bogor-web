@@ -1,189 +1,225 @@
 :root {
-	--dFont: 16px;
-	--mFont: 12px;
-	--primaryColor: #163020;
-	--secondaryColor: #304d30;
-	--hoverColor: #b6c4b6;
-	--fontColor: #eef0e5;
+  --dFont: 16px;
+  --mFont: 12px;
+  --primaryColor: #163020;
+  --secondaryColor: #304d30;
+  --hoverColor: #b6c4b6;
+  --fontColor: #eef0e5;
 }
 
 * {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-	color: var(--fontColor);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: var(--fontColor);
 }
 
 body {
-	font-family: Roboto;
-	font-size: clamp(var(--mFont), calc(var(--mFont) + 1vw), var(--dFont));
+  font-family: 'Roboto', 'Roboto Condensed';
+  font-size: clamp(var(--mFont), 5vw, var(--dFont));
 }
 
 header {
-	height: 3.125em;
-	background-color: var(--secondaryColor);
-	position: sticky;
-	z-index: 2;
-	top: 0;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  height: 3.125em;
+  background-color: var(--secondaryColor);
+  z-index: 3;
 }
 
 header a {
-	text-decoration: none;
-	font-weight: bold;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 nav {
-	display: flex;
-	height: inherit;
-	justify-content: space-between;
-	align-items: center;
-	padding-inline: 0.75em;
+  display: flex;
+  height: inherit;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 0.75em;
+}
+
+nav #menuButton {
+  border: none;
+  background-color: inherit;
 }
 
 nav ul {
-	display: flex;
+  display: flex;
 }
 
 nav ul li {
-	padding: 1em;
+  padding: 1em;
 }
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 nav ul li:hover,
 nav ul li:active {
-	display: block;
-	cursor: pointer;
-	color: var(--hoverColor);
-	background: var(--primaryColor);
+  display: block;
+  cursor: pointer;
+  color: var(--hoverColor);
+  background: var(--primaryColor);
 }
 
 .linkNav {
-	background: url("../img/nav-bar.png") no-repeat;
-	display: none;
-	width: 1em;
-	height: 1em;
+  background: url('../img/nav-bar.png') no-repeat;
+  display: none;
+  width: 1em;
+  height: 1em;
 }
 
 main {
-	display: flex;
-	background-color: var(--primaryColor);
-	padding: 0 1.25em 1em;
-	gap: 1em;
+  display: flex;
+  position: relative;
+  background-color: var(--primaryColor);
+  padding: 0 1.25em 1em;
+  gap: 1em;
 }
 
 .typewriter {
-	overflow: hidden; /* Hide overflowing content */
-	opacity: 0;
-	width: 100%; /* Set initial width to 100% */
-	max-width: max-content; /* Set maximum width */
-	height: 100px; /* Initially hide the content */
-	-webkit-background-clip: text;
-	color: transparent;
-	background-clip: text;
-	background-image: linear-gradient(90deg, var(--fontColor), var(--hoverColor));
-	transition: opacity 0.5s;
+  overflow: hidden;
+  opacity: 0;
+  width: 100%;
+  max-width: max-content;
+  height: 100px;
+  -moz-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(90deg, var(--fontColor), var(--hoverColor));
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
 }
 
-.animate {
-	opacity: 1;
-	width: auto; /* Reveal the content by setting width to auto */
-	height: auto;
+.appear {
+  opacity: 1;
+  width: auto;
+  height: auto;
 }
 
-@keyframes typewriter {
-	from {
-		width: 0; /* Start with zero width */
-	}
-	to {
-		width: 100%; /* Expand to full width */
-	}
+body,
+html {
+  height: 100%;
 }
 
-.jumbotron {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
+.parallax {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust height as needed */
+  overflow: hidden;
 }
 
-.jumbotron > img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/bogor-gunung.webp');
+  background-attachment: fixed;
+  object-fit: cover;
+  transform: translateZ(100px) scale(1.5);
+  background-position: center;
+  -webkit-transform: translateZ(100px) scale(1.5);
+  -moz-transform: translateZ(100px) scale(1.5);
+  -ms-transform: translateZ(100px) scale(1.5);
+  -o-transform: translateZ(100px) scale(1.5);
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  transform-style: preserve-3d;
 }
 
 .mainTopic,
 article {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+#map {
+  width: 100%;
 }
 
 main > aside {
-	position: sticky;
-	height: 100%;
-	top: 10em;
-	box-shadow: 0 0 3px 4px grey;
-	padding: 0.625em;
+  position: sticky;
+  height: 100%;
+  top: 10em;
+  box-shadow: 0 0 3px 4px grey;
+  padding: 0.625em;
 }
 
 article h2,
 article h3 {
-	text-decoration: underline;
+  text-decoration: underline;
+}
+
+article p {
+  text-wrap: balance;
 }
 
 aside img {
-	border-radius: 50%;
+  border-radius: 50%;
 }
 
 footer {
-	background: var(--secondaryColor);
-	padding: 1em;
-	height: 3em;
+  background: var(--secondaryColor);
+  padding: 1em;
+  height: 3em;
 }
 
 @media (max-width: 1024px) {
-	main {
-		flex-direction: column;
-	}
+  main {
+    flex-direction: column;
+  }
 
-	nav {
-		position: relative;
-	}
+  nav {
+    position: relative;
+  }
 
-	.flex {
-		display: flex;
-		flex-direction: column;
-	}
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
 
-	nav ul {
-		position: absolute;
-		top: 3.125em;
-		right: 0;
-		left: 0;
-		opacity: 0.7;
-		display: none;
-	}
+  nav ul {
+    position: absolute;
+    top: 3.125em;
+    right: 0;
+    left: 0;
+    opacity: 0.7;
+    display: none;
+  }
 
-	#barNav li {
-		text-align: center;
-	}
+  #barNav li {
+    text-align: center;
+  }
 
-	#barNav li:nth-child(odd) {
-		background-color: var(--primaryColor);
-	}
+  #barNav li:nth-child(odd) {
+    background-color: var(--primaryColor);
+  }
 
-	#barNav li:nth-child(even) {
-		background-color: var(--secondaryColor);
-	}
+  #barNav li:nth-child(even) {
+    background-color: var(--secondaryColor);
+  }
 
-	.linkNav {
-		display: block;
-	}
+  .linkNav {
+    display: block;
+  }
 
-	main > aside {
-		position: static;
-	}
+  main > aside {
+    position: static;
+  }
 }
