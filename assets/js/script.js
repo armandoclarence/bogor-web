@@ -30,7 +30,6 @@ typewriters.forEach(typewriter => {
 window.addEventListener('scroll', function() {
   const scrolled = window.scrollY;
   const parallax = document.querySelector('.parallax');
-  const foreground = document.querySelector('.foreground');
   parallax.style.transform = `translateY(${scrolled * 0.5}px)`; 
 });
 
@@ -42,18 +41,8 @@ const stickyElement = document.querySelector('aside');
   // Update the top position of the sticky element based on the scrolling position
   function updateStickyPosition() {
     const scrollTop = window.scrollY;
-    stickyElement.style.top = (10 + scrollTop) + 'px';
+    stickyElement.style.top = ((10 + scrollTop) /3) + 'px';
   }
 
   // Attach an event listener to the scroll event
   window.addEventListener('scroll', updateStickyPosition);
-
-  window.onload = function() {
-    var blurryImg = document.querySelector('.blurry-img');
-    var realImg = document.querySelector('.real-img');
-  
-    realImg.onload = function() {
-      blurryImg.style.opacity = 0;
-    };
-    realImg.style.opacity = 1
-  };

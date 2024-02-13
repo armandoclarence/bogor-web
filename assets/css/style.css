@@ -112,24 +112,17 @@ main {
   overflow: hidden;
 }
 
-.image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding-top: 56.25%; /* Aspect ratio (e.g., 16:9) */
-  overflow: hidden;
-}
 
-
-.real-img {
+.background {
+  background-image: url('../img/bogor-gunung.webp');
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  transition: opacity 0.5s;
-  object-fit: cover;
-  opacity: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .content {
