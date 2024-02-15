@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'Roboto', 'Roboto Condensed';
+  font-family: 'Roboto';
   scroll-behavior: smooth;
   font-size: clamp(var(--mFont), 5vw, var(--dFont));
 }
@@ -108,6 +108,8 @@ main {
 .parallax {
   position: relative;
   width: 100%;
+  background-image: url('../img/bogor-banner-blur.jpg');
+  background-size: cover;
   height: 100vh; /* Adjust height as needed */
   overflow: hidden;
 }

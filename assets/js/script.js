@@ -27,22 +27,40 @@ typewriters.forEach(typewriter => {
   observer.observe(typewriter);
 });
 
-window.addEventListener('scroll', function() {
+function parallaxEffect() {
   const scrolled = window.scrollY;
   const parallax = document.querySelector('.parallax');
   parallax.style.transform = `translateY(${scrolled * 0.5}px)`; 
-});
-
+}
 const stickyElement = document.querySelector('aside');
 
-  // Calculate the initial offset of the sticky element
-  const stickyOffset = stickyElement.getBoundingClientRect().top;
+function updateStickyPosition() {
+  const scrollTop = window.scrollY;
+  stickyElement.style.top = ((10 + scrollTop) / 3) + 'px';
+}
+function smoothScroll() {
+  // Calculate the scroll position
+  const currentScroll = window.scrollY;
 
-  // Update the top position of the sticky element based on the scrolling position
-  function updateStickyPosition() {
-    const scrollTop = window.scrollY;
-    stickyElement.style.top = ((10 + scrollTop) /3) + 'px';
+  // Update the scroll position based on your desired smoothness
+  // You can adjust the easing function as needed
+  const targetScroll = currentScroll + (targetScroll - currentScroll) * 0.1;
+
+  // Apply the updated scroll position
+  window.scrollTo(0, targetScroll);
+
+  // Request another animation frame if the scroll position hasn't reached the target yet
+  if (Math.abs(targetScroll - currentScroll) > 1) {
+    requestAnimationFrame(smoothScroll);
   }
+}
 
-  // Attach an event listener to the scroll event
-  window.addEventListener('scroll', updateStickyPosition);
+// Attach the smoothScroll function to the scroll event
+window.addEventListener('scroll', smoothScroll);
+
+function handleScroll(){
+  parallaxEffect()
+  updateStickyPosition()
+}
+window.addEventListener('wheel', handleScroll, {passive: true});
+window.addEventListener('scroll', handleScroll, {passive: true});
