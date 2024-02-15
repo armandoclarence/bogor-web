@@ -7,6 +7,11 @@
   --fontColor: #eef0e5;
 }
 
+html {
+  scroll-padding-top: 4em;
+  scroll-behavior: smooth;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -16,7 +21,6 @@
 
 body {
   font-family: 'Roboto';
-  scroll-behavior: smooth;
   font-size: clamp(var(--mFont), 5vw, var(--dFont));
 }
 
@@ -87,22 +91,33 @@ main {
   overflow: hidden;
   opacity: 0;
   width: 100%;
-  max-width: max-content;
   height: 100px;
   -moz-background-clip: text;
   color: transparent;
+  transform: translateX(-50px);
   background-clip: text;
   -webkit-background-clip: text;
   background-image: linear-gradient(90deg, var(--fontColor), var(--hoverColor));
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-  -moz-transition: opacity 0.5s;
+  transition: opacity 0.5s, transform 0.5s;
+  -webkit-transition: opacity 0.5s, transform 0.5s;
+  -moz-transition: opacity 0.5s, transform 0.5s;
+  -ms-transition: opacity 0.5s, transform 0.5s;
+  -o-transition: opacity 0.5s, transform 0.5s;
+  -webkit-transform: translateX(-50px);
+  -moz-transform: translateX(-50px);
+  -ms-transform: translateX(-50px);
+  -o-transform: translateX(-50px);
 }
 
-.appear {
+.fade-right {
   opacity: 1;
   width: auto;
   height: auto;
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
 }
 
 .parallax {
@@ -113,7 +128,6 @@ main {
   height: 100vh; /* Adjust height as needed */
   overflow: hidden;
 }
-
 
 .background {
   background-image: url('../img/bogor-gunung.webp');
